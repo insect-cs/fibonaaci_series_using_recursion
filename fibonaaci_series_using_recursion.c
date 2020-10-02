@@ -1,32 +1,29 @@
-#include<stdio.h>
-int fibonacci(int a);
+#include<stdio.h> 
 
-int main(){
-    int s=0;
-    printf("enter a number\n");
-    scanf("%d",&s);
-       
-    printf("%d\n",s,fibonacci(s));
+int fibonacci(int n) 
+{ 
+/* Declare an array to store Fibonacci numbers. */
+int f[n+2]; // 1 extra to handle case, n = 0 
+int i; 
 
-    return 0;
-}
+/* 0th and 1st number of the series are 0 and 1*/
+f[0] = 0; 
+f[1] = 1; 
 
-int fibonacci(int a){
-    int i=0;
-    if(a==0 || a==1)
-    {
-        return 1;
-    }
-    else
-    {  
-        
-        for(i=1; i<=a; i++)
-    {
-       a++;
-    }
-       return ( fibonacci(a-1) + fibonacci(a-2) );
-    }
-    
-    return 0;
-    
-}
+for (i = 2; i <= n; i++) 
+{ 
+	/* Add the previous 2 numbers in the series 
+		and store it */
+	f[i] = f[i-1] + f[i-2]; 
+} 
+
+return f[n]; 
+} 
+
+int main () 
+{ 
+int n = 9; 
+printf("%d", fibonacci(n)); //printing the fibonacci series
+getchar(); 
+return 0; 
+} 
